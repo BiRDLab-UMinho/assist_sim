@@ -1,0 +1,25 @@
+<mujoco model="ExoKneeL1">
+    <compiler angle="degree" />
+    <default class="main" />
+    <asset>
+        <mesh file="mesh/thigh_orth.stl" name="thigh_orth_geom" scale="0.001 0.001 0.001"/>
+        <mesh file="mesh/motor.stl" name="motor_geom" scale="0.001 0.001 0.001"/>
+        <mesh file="mesh/shank_orth.stl" name="shank_orth_geom" scale="0.001 0.001 0.001"/>
+    </asset>
+    <worldbody>
+        <body name="thigh_orth" pos="0.012 0.205 0.11" axisangle="0 1 0 90">
+            <inertial mass="0.366" pos="0.1138 -0.4691 0.0073" axisangle="0.0291 0.0761 0.9967 60.03" diaginertia="1919e-06 1370e-06 2858e-06"/>
+            <geom name="thigh_orth_geom" mesh="thigh_orth_geom" type="mesh" rgba="0.1 0.1 0.1 1"/>
+            <site name="thigh_force" type="box" pos="0.17 -0.52 -0.0073" rgba="0 1 0 1"/>
+        </body>
+        <body name="motor" pos = "0.012 0.205 0.11" axisangle="0 1 0 90">
+            <inertial mass="0.88" pos="0.2019 -0.6226 -0.0111" axisangle="0.6857 0.1044 0.7203 178.74" diaginertia="756e-06 693e-06 1131.5e-06"/>
+            <geom name="motor_geom" mesh="motor_geom" type="mesh" rgba="0.5 0.5 0.5 1"/>
+        </body>
+        <body name="shank_orth" pos="-0.04 0.6 0.11" quat="0.7063929 -0.03082956 0.7063929 0.03082956">
+            <inertial mass="0.248" pos="0.1359 -0.7626 -0.0116" axisangle="0.1502 0.4745 -0.8673 15.64" diaginertia="1555e-06 572e-06 1954e-06"/>
+            <geom name="shank_orth_geom" mesh="shank_orth_geom" type="mesh" rgba="0.1 0.1 0.1 1"/>
+            <site name="shank_force" type="box" pos="0.17 -0.71 -0.02" rgba="0 1 0 1"/>
+        </body>
+    </worldbody>
+</mujoco>
