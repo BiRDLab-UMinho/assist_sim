@@ -1,0 +1,35 @@
+device:
+  name: "ExoKneeAddedMass_L1"
+  model_xml: "L1model.xml"
+  compatible_msk: [myolegs22, myolegs26]
+
+attachments:
+  - device_body: "thigh_orth"
+    parent_body: "femur_l"
+  - device_body: "motor"
+    parent_body: "femur_l"
+  - device_body: "shank_orth"
+    parent_body: "tibia_l"
+
+actuators:
+  - name: "Motor"
+    joint: "knee_angle_l"
+    gaintype: "fixed"
+    gainprm: [20, 0, 0]
+    ctrlrange: [-1, 1]
+    ctrllimited: true
+    gear: [1.0]
+    
+body_overrides:
+  - name: "torso"
+    mass: 28.619
+    diaginertia: [0.2536, 0.2306, 0.1921]
+
+contact:
+  pairs:
+    - {geom1: "thigh_orth_geom", geom2: "femur_l_geom_1"}
+    - {geom1: "shank_orth_geom", geom2: "tibia_l_geom_2"}
+
+sensors: 
+  - {name: "thigh_int", type: force, site: thigh_force}
+  - {name: "shank_int", type: force, site: shank_force}
