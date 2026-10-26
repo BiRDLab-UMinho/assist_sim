@@ -19,6 +19,18 @@ actuators:
     ctrlrange: [-1, 1]
     ctrllimited: true
     gear: [1.0]
+    
+joint_overrides:
+  default:
+  myolegs26:
+    - name: "hip_rotation_r"
+      range: [0, 0.001]
+    - name: "hip_rotation_l"
+      range: [0, 0.001]
+    - name: "hip_adduction_r"
+      range: [0, 0.001]
+    - name: "hip_adduction_l"
+      range: [0, 0.001]
 
 contact:
   pairs:
