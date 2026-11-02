@@ -1,7 +1,7 @@
 device:
   name: "ExoKnee_L1"
   model_xml: "L1model.xml"
-  compatible_msk: [myolegs22, myolegs26]
+  compatible_msk: [myolegs22, myolegs26, myolegs, myofullbody]
 
 attachments:
   - device_body: "thigh_orth"
@@ -19,23 +19,18 @@ actuators:
     ctrlrange: [-1, 1]
     ctrllimited: true
     gear: [1.0]
-    
-joint_overrides:
-  default:
-  myolegs26:
-    - name: "hip_rotation_r"
-      range: [0, 0.001]
-    - name: "hip_rotation_l"
-      range: [0, 0.001]
-    - name: "hip_adduction_r"
-      range: [0, 0.001]
-    - name: "hip_adduction_l"
-      range: [0, 0.001]
 
 contact:
   pairs:
-    - {geom1: "thigh_orth_geom", geom2: "femur_l_geom_1"}
-    - {geom1: "shank_orth_geom", geom2: "tibia_l_geom_2"}
+    default:
+      - {geom1: "thigh_orth_geom", geom2: "femur_l_geom_1"}
+      - {geom1: "shank_orth_geom", geom2: "tibia_l_geom_2"}
+    myolegs:
+      - {geom1: "thigh_orth_geom", geom2: "femur_l"}
+      - {geom1: "shank_orth_geom", geom2: "tibia_l"}
+    myofullbody:
+      - {geom1: "thigh_orth_geom", geom2: "femur_l"}
+      - {geom1: "shank_orth_geom", geom2: "tibia_l"}
 
 sensors: 
   - {name: "thigh_int", type: force, site: thigh_force}
